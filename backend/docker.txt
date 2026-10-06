@@ -1,0 +1,141 @@
+“Docker is a containerization platform used to package an application with its runtime and dependencies into an image and run it consistently as an isolated container across environments.”
+
+it tells npm which javascript / node dependices to install 
+
+But it doesn't fully guarantee the environment where your application runs.
+
+For example, Developer A could have:
+
+Node.js 20
+npm 10
+Linux
+
+
+developer B could have
+
+Node.js 18
+npm 9
+Windows
+
+Docker lets us define a more consistent runtime environment.
+
+With Docker, we create an image that defines things such as:
+
+Node version
+Application files
+Dependencies
+Build process
+Startup command
+
+Build this application using a Node 20-based image.
+Each service gets an isolated runtime/filesystem environment.
+
+what is a docker container ? 
+
+1. What is a Docker Image?
+
+an image is a packaged blue print of your application
+Image = packaged application
+
+what is a container ? 
+
+a conatiner is a running instance of an image
+
+project-service:v1
+       IMAGE
+
+       project-service:v1
+       ↓
+   docker run
+       ↓
+Project Service Container
+       ↓
+Express server running
+       ↓
+Listening on port 4002
+
+Image       → blueprint/package
+Container   → running instance
+
+
+can one image create multiple containers
+
+                project-service:v1
+                       IMAGE
+                 /       |       \
+                ↓        ↓        ↓
+          Container 1 Container 2 Container 3
+
+Imagine one Project Service container can't handle all traffic:
+10,000 requests
+      ↓
+Project Service
+      ↓
+too much load
+
+We might run multiple instances:
+                 Load Balancer
+               /      |       \
+              ↓       ↓        ↓
+          Project   Project   Project
+          Container Container Container
+             1         2         3
+
+This connects Docker to the scaling concepts you'll later see in AWS.
+
+Now these commands should make sense.
+
+docker build -t project-service
+Dockerfile
+    +
+Project source code
+    ↓
+docker build
+    ↓
+Docker Image
+
+docker build creates an image.
+
+docker run project-service
+
+Docker Image
+     ↓
+docker run
+     ↓
+Container
+     ↓
+Application running
+
+docker run creates/starts a container from an image.
+
+FROM    → What environment does my app need?
+WORKDIR → Where should my app live inside Docker?
+COPY    → Copy files from my computer into Docker
+RUN     → Execute a command WHILE BUILDING the image
+CMD     → Start my application WHEN the container runs
+
+
+curl.exe -i http://localhost:5002/projects
+- curl.exe — sends an HTTP request.
+- -i — shows the response status and headers along with its body.
+- localhost:5002 — addresses port 5002 on your computer.
+- /projects — selects your projects API endpoint.
+
+
+
+
+C:\Users\USER\Desktop\project-management\project-management\backend\project-service>docker rm -f redis-local
+redis-local
+
+C:\Users\USER\Desktop\project-management\project-management\backend\project-service>docker run -d --name redis-local -p 6379:6379 redis:7
+30c074a84109e6a5f77f6bea35ce6985a0b89b67cfbd0f0cd829730d701b8601
+
+C:\Users\USER\Desktop\project-management\project-management\backend\project-service>docker ps -a
+CONTAINER ID   IMAGE             COMMAND                  CREATED         STATUS                  PORTS                                         NAMES
+30c074a84109   redis:7           "docker-entrypoint.s…"   9 seconds ago   Up 7 seconds            0.0.0.0:6379->6379/tcp, [::]:6379->6379/tcp   redis-local
+c29593591531   project-service   "docker-entrypoint.s…"   4 days ago      Exited (1) 2 days ago                                                 priceless_johnson
+
+C:\Users\USER\Desktop\project-management\project-management\backend\project-service>docker exec -it redis-local redis-cli
+127.0.0.1:6379> PING
+PONG
+127.0.0.1:6379> 

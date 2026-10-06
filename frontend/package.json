@@ -1,0 +1,15 @@
+{
+  "name": "frontend",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently \"npm run dev --prefix shell\" \"npm run build:watch --prefix auth-mfe\" \"npm run preview --prefix auth-mfe\" \"npm run build:watch --prefix project-mfe\" \"npm run preview --prefix project-mfe\""
+  },
+  "devDependencies": {
+    "concurrently": "^10.0.5"
+  }
+}

@@ -1,0 +1,23 @@
+# Don't upload installed packages
+node_modules
+# dont upload .env
+.env
+.env*.
+# Don't upload compiled output
+dist/
+build/
+# Logs
+*.log
+npm-debug.log*
+
+# VS Code local settings
+.vscode/
+
+
+# Windows/macOS files
+Thumbs.db
+.DS_Store
+
+
+# Our local AWS notes
+aws.txt

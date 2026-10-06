@@ -1,0 +1,178 @@
+                         BROWSER
+                            │
+                            ▼
+                  ┌──────────────────┐
+                  │     HOST MFE     │
+                  │   React + Vite   │
+                  └────────┬─────────┘
+                           │
+          ┌────────────────┼────────────────┐
+          ▼                ▼                ▼
+     Auth MFE         Project MFE        Task MFE
+   React + Vite      React + Vite      React + Vite
+
+                           │
+                           │ HTTP / REST
+                           ▼
+                  ┌──────────────────┐
+                  │    API GATEWAY   │
+                  │ Node + Express   │
+                  └────────┬─────────┘
+                           │
+          ┌────────────────┼────────────────┐
+          ▼                ▼                ▼
+     Auth Service     Project Service    Task Service
+     Node/Express      Node/Express      Node/Express
+          │                │                │
+          ▼                ▼                ▼
+       MongoDB           MongoDB           MongoDB
+
+                           │
+                    ┌──────┴──────┐
+                    ▼             ▼
+                  Redis         Kafka
+                                  │
+                                  ▼
+                         Notification Service
+
+
+
+
+                         Access token expires
+       ↓
+Refresh token
+       ↓
+POST /auth/refresh
+       ↓
+Backend validates refresh token/session
+       ↓
+New access token
+
+
+
+what is redis?
+
+Remote directory Server
+
+redis is a very fast data storage system
+
+1000 users repeatedly request the same project information.
+
+User 1 → Backend → MongoDB
+User 2 → Backend → MongoDB
+User 3 → Backend → MongoDB
+User 4 → Backend → MongoDB
+                  ↑
+             repeated work
+
+pointing to cached project -list data             
+
+Redis is designed around fast operations on data structures that are primarily kept in memory (RAM).
+
+redis->ram->very fast access
+This is one reason Redis is commonly used for things that need quick access.
+
+Redis
+ ├── Caching
+ ├── Sessions
+ ├── Rate limiting
+ ├── Counters
+ ├── Pub/Sub
+ ├── Leaderboards
+ ├── Distributed locks
+ └── temporary application data
+
+ Redis is an in-memory data store.
+
+ What is memory?
+
+Your computer/server mainly has:
+
+RAM       → very fast, temporary working memory
+Disk/SSD  → persistent storage
+
+RAM:  16 GB
+SSD:  500 GB
+
+Accessing data already available in RAM is generally much faster than accessing persistent storage.
+
+redis stores data by giving it a name (key) and a value
+
+key =============> value
+'name' ---------> 'sudhir'
+'rol' ----------> "developer'
+
+3. SET — Store data
+
+The first Redis command is:
+
+SET
+
+Definition:
+
+SET stores a value under a key.
+
+4. GET — Read data
+
+Definition:
+
+GET gets the value stored under a key.
+
+5. What if the key doesn't exist?
+
+Suppose we never stored:
+
+age
+
+and ask:
+
+GET age
+
+Redis has nothing for that key, so the Redis CLI returns a missing value (commonly shown as nil).
+
+1. What is Redis                         ✅
+2. Why Redis / In-memory                ✅
+3. Key → Value                          ✅
+4. SET / GET                            ✅
+
+5. Cache Hit & Cache Miss                 ← NEXT
+6. Cache-Aside Pattern
+7. TTL / EXPIRE
+8. DEL & Cache Invalidation
+9. Stale Data
+10. Cache Key Design
+11. Redis Data Types
+    - String
+    - Hash
+    - List
+    - Set
+    - Sorted Set
+12. Rate Limiting
+13. Atomic Operations
+14. Redis Transactions
+15. Pub/Sub
+16. Redis Persistence
+    - RDB
+    - AOF
+17. Eviction Policies
+18. Cache Stampede
+19. Cache Penetration
+20. Cache Avalanche
+21. Distributed Locks
+22. Replication
+23. Sentinel
+24. Redis Cluster
+25. Redis failure handling
+26. Redis vs MongoDB
+27. Redis vs application memory
+28. Production/AWS Redis
+29. Real-world Redis interview scenarios
+
+
+host.docker.internal
+
+
+MongoDB down → API cannot get project data ❌
+
+Redis down → API should still use MongoDB ✅
+             just slower

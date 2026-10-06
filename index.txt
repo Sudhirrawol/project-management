@@ -1,0 +1,93 @@
+Phase	Main concepts
+Caching + Redis	Cache strategies, TTL, eviction, invalidation, stampede, distributed cache
+Distributed Systems ⭐	CAP theorem, consistency, availability, quorum, idempotency, distributed locks, Saga
+Kafka / Queues ⭐	Queue, Pub/Sub, producer/consumer, partitions, consumer groups, retries, DLQ, event-driven architecture
+Microservices	Service communication, service discovery, circuit breaker, API Gateway patterns
+Storage	Object/file/block storage, large-file upload, S3 concepts
+Search	Elasticsearch, inverted index, full-text search
+Observability	Logs, metrics, tracing, monitoring
+Security	Authentication/authorization, JWT, OAuth basics, TLS/mTLS, secrets
+HLD problems ⭐⭐⭐⭐⭐	URL Shortener, Chat System, Notification System, YouTube, Uber-style system, etc.
+LLD ⭐⭐⭐⭐⭐	OOP, SOLID, UML, design patterns + Parking Lot, Elevator, Logger, etc.
+
+
+
+The client specifies the shape of the data it needs, constrained by a strongly typed schema exposed by the server.
+
+GraphQL stands for Graph Query Language
+graphQl is primiraly an API query language and runtime not a database
+
+
+Rest is resource/end point oriented 
+get/ /projects
+get /project/:idempotency
+post /projects
+Put /projects/:id
+Delete /projects/:id
+
+GraphQl is generally schema query oriented
+
+query{
+    projects{
+     id
+     name
+    }
+}
+
+REST
+Client chooses endpoint
+Server largely chooses response shape
+
+GraphQL
+Client chooses fields
+Server schema defines what is possible
+Resolvers determine how those fields are obtained
+
+Does GraphQl always fewer database queries
+no
+
+
+graph Ql controls the api interaction and execution model it does not magically optimize your database
+
+Later we'll learn the famous GraphQL problem:
+
+N+1 queries
+
+and one common solution:
+
+DataLoader.
+
+7. Why NOT use GraphQL everywhere?
+
+Because GraphQL introduces complexity.
+
+With REST, something like:
+
+GET /projects/123 is very straightforward
+Schema
+Types
+Queries
+Mutations
+Resolvers
+Context
+Variables
+Fragments
+Client cache
+DataLoader
+Query complexity/security
+
+Schema — the contract describing what data/operations the API exposes.
+
+Type — the shape of an object, such as Project.
+
+Query — reading data.
+
+Mutation — changing data.
+
+Resolver — backend function that supplies data for a GraphQL field
+
+
+NPM/shared packages → Storybook → Web Components, including how they work across MFEs and the interview questions around them.
+
+It is an NPM package that lets one terminal run multiple commands/processes at the same time.
+

@@ -1,0 +1,150 @@
+Yes. Since your React + Node interview is tomorrow, we should cover the React concepts in a fixed order instead of jumping around.
+You already practiced: useState, props, map, key, callbacks, event handling, filter, parent → child, child → parent, and re-rendering.
+Next concepts we will cover
+Order	Concept	We will learn it by
+1	Controlled inputs	Project name/description inputs
+2	onChange	Update input state while typing
+3	Forms + onSubmit	Create Project form
+4	Validation	Required fields / error messages
+5	Spread operator	Add/update objects and arrays without mutation
+6	Conditional rendering	Show/hide form, loader, errors
+7	Edit functionality	Populate form and update project
+8	Search	Filter projects from input
+9	useEffect	Fetch projects when component loads
+10	API calls	GET/POST/PUT/DELETE
+11	Loading state	Show loader while API runs
+12	Error state	Handle API/network failures
+13	try/catch/finally	Proper async API handling
+14	AbortController / cleanup	Cancel unnecessary requests
+15	Custom hooks	useProjects()
+16	Reusable components	Button, Input, Modal, ProjectCard, Pagination
+17	Lifting state up	Share state between components
+18	Composition / children	Reusable Modal/Layout components
+19	useRef	DOM reference / values without re-render
+20	useMemo	Cache expensive calculated values
+21	useCallback	Keep function references stable when needed
+22	React.memo	Avoid unnecessary child renders
+23	Context API	Shared app-level data
+24	useReducer	More complex state transitions
+25	Debouncing	Search without calling API on every keystroke
+26	Pagination	page/limit + backend integration
+27	Routing	React Router / protected routes
+28	Authentication frontend	access token, refresh flow, logout
+29	Lazy loading	Load code only when needed
+30	Suspense	Loading boundary for lazy components
+31	Error boundaries	Handle rendering failures
+32	React Profiler	Find slow components
+33	Performance debugging	Diagnose slow frontend/API
+34	MFE concepts	Host/remote, Module Federation, shared dependencies
+35	State management	Redux Toolkit / RTK Query revision
+
+
+For tomorrow, there are also some JavaScript concepts we must revise, because React interviewers often move into JS:
+var / let / const
+scope
+hoisting
+closures
+this
+arrow functions
+map / filter / reduce
+destructuring
+spread / rest
+shallow vs deep copy
+mutation vs immutability
+Promise
+async / await
+Promise.all
+event loop
+microtask / macrotask
+debounce / throttle
+optional chaining
+nullish coalescing
+
+And I want to give extra attention to 5-year-level scenario questions, not just definitions:
+Why is my component rendering twice?
+Why is useEffect running again?
+Why is an API being called multiple times?
+How do you prevent an infinite useEffect loop?
+Where should state live?
+Context vs Redux?
+useMemo vs useCallback?
+When should you NOT use memoization?
+Why is a list with 10,000 rows slow?
+How would you debug a slow React page?
+How do you reduce bundle size?
+How do you cancel an API request?
+How do you prevent race conditions in search?
+How do you design reusable components?
+How do MFEs communicate?
+How do you share dependencies between MFEs?
+What happens if one MFE fails?
+How do you handle authentication across MFEs?
+
+Tonight's priority
+We cannot meaningfully practice all 35 concepts deeply in one evening. So we'll prioritize:
+Create/Edit form → API calls → useEffect → search/debounce → custom hooks → reusable components → performance (memo, useMemo, useCallback) → MFE → Redux/RTK Query → JavaScript/event loop → Node.js → mock interview.
+That covers the highest-value material for tomorrow.
+Next: Create Project form → controlled inputs + onChange + onSubmit.
+
+use Memo is a react hook theta cachd the result of a calculation between renders and recalculats when ever the dependices chnages
+
+use call back is a react hook that cache the function reference  between renders and creates a nw function only when its dependices change
+
+
+React.memo is used to prevent a component from re-rendering  when its props have not changed 
+
+Strict mode is a development only react feature
+
+useReducer is a react hook which is used to manage state when the state logic becomes complex or when multiple related state changes need to be handled in a strctured way
+
+error boundaries catches JavaScript errors and in part of react component tree and shows a fallback ui instead od crashing the whole application 
+
+Context API shares data across multiple React components without passing props through every intermediate component.
+
+
+tanstack query is a library for managing server data in front end applications
+QueryClient
+QueryClientProvider
+useQuery
+queryKey
+queryFn
+staleTime
+cache
+refetch
+useMutation
+invalidateQueries
+
+tanstack query is a server state managemenet library it helps manage asynchronous 
+data fetching caching,loadingand error states, refetching , mutations and synchronization between  the frontend and server
+
+QueryClient
+    ↓
+controls/manages query cache
+
+QueryClientProvider
+    ↓
+makes that QueryClient available to React components
+
+useQuery
+    ↓
+uses it to manage server data
+
+
+redux is a state management library 
+              Redux Store
+                  ↓
+             useSelector()
+                  ↓
+              Component
+                  |
+          user clicks something
+                  ↓
+             dispatch()
+                  ↓
+               Action
+                  ↓
+               Reducer
+                  ↓
+             Store updated
+                  ↓
+         Component re-renders
