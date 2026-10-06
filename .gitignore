@@ -1,23 +1,32 @@
-# Don't upload installed packages
-node_modules
-# dont upload .env
+# Dependencies
+node_modules/
+**/node_modules/
+
+# Environment variables / secrets
 .env
-.env*.
-# Don't upload compiled output
+.env.*
+**/.env
+**/.env.*
+
+# Build output
 dist/
+**/dist/
 build/
+**/build/
+
 # Logs
 *.log
 npm-debug.log*
 
-# VS Code local settings
+# VS Code
 .vscode/
 
-
-# Windows/macOS files
+# OS files
 Thumbs.db
 .DS_Store
 
-
-# Our local AWS notes
+# Local notes
 aws.txt
+
+# TypeScript build cache
+*.tsbuildinfo
