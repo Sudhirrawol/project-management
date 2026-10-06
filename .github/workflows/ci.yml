@@ -7,15 +7,6 @@ on:
   pull_request:
     branches:
       - main
-name: Project Management CI
-
-on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
 
 jobs:
   build:
