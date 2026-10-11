@@ -176,3 +176,9 @@ MongoDB down → API cannot get project data ❌
 
 Redis down → API should still use MongoDB ✅
              just slower
+
+
+this is called one to many relationship
+
+one orginization has many users.
+each users belongs to one originization in our initial design 

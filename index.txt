@@ -91,3 +91,206 @@ NPM/shared packages → Storybook → Web Components, including how they work ac
 
 It is an NPM package that lets one terminal run multiple commands/processes at the same time.
 
+
+
+                         USERS
+                           │
+                    CloudFront / CDN
+                           │
+                    React Frontend
+                           │
+                           ▼
+                     Load Balancer
+                           │
+                     API Gateway
+                           │
+          ┌────────────────┼────────────────┐
+          ▼                ▼                ▼
+    Auth Service     Project Service    Task Service
+          │                │                │
+          └──────────────┬─┴────────────────┘
+                         │
+                       Kafka
+                  ┌──────┼──────┐
+                  ▼      ▼      ▼
+             Notification  Audit/Activity
+               Service       Service
+
+                 MongoDB
+                    │
+                  Redis
+             cache / sessions
+
+──────────────── Infrastructure ────────────────
+
+Docker → Registry/ECR → AWS ECS/Kubernetes
+                         │
+                    Load Balancer
+                         │
+                     CloudWatch
+
+GitHub
+   │
+   ▼
+CI/CD
+GitHub Actions / Jenkins
+   │
+   ├── Test
+   ├── Build
+   ├── Docker
+   ├── Security checks
+   └── Deploy
+
+──────────────── Later ────────────────────────
+
+                     AI Service
+                         │
+               LLM / RAG / Tools
+                         │
+              Project knowledge/data
+
+
+
+                                  PROJECT MANAGEMENT PLATFORM
+
+┌─────────────────── UI / FRONTEND ───────────────────┐
+│ React + TypeScript                                  │
+│ Microfrontends                                      │
+│ Responsive layout                                   │
+│ Dashboard / Sidebar / Navigation                    │
+│ Forms + validation                                  │
+│ Tables / filters / pagination                       │
+│ Kanban board / drag & drop                          │
+│ Modals / drawers / toasts                           │
+│ Loading skeletons / empty states / error states     │
+│ React Query + caching                               │
+│ Performance / accessibility                         │
+└─────────────────────────┬────────────────────────────┘
+                          │ REST
+┌─────────────────────────▼────────────────────────────┐
+│                    BACKEND                           │
+│ API Gateway                                          │
+│ Auth / User / Project / Task services                │
+│ Node.js + TypeScript                                 │
+│ MongoDB                                              │
+│ Redis                                                │
+│ Kafka                                                │
+└─────────────────────────┬────────────────────────────┘
+                          │
+┌─────────────────────────▼────────────────────────────┐
+│               DEVOPS / CLOUD                         │
+│ Docker → CI/CD → AWS → Monitoring                    |
+│ ECR / ECS / ALB / S3 / CloudFront / Lambda           |
+│ Later: Jenkins + Kubernetes                          |
+└──────────────────────────────────────────────────────┘
+
+
+Software Company
+      │
+      ├── Team Members
+      │     ├── Admin
+      │     ├── Project Manager
+      │     └── Developer
+      │
+      ├── Clients
+      │      ↓
+      ├── Projects
+      │      ↓
+      ├── Requirements
+      │      ↓
+      ├── Tasks / Kanban
+      │      ↓
+      ├── Comments / Activity
+      │      ↓
+      ├── Files
+      │      ↓
+      ├── Client Approval
+      │
+      ├── Notifications
+      └── Reports / Dashboard
+
+
+      Client
+  ↓
+Login
+  ↓
+See project progress
+  ↓
+Review requirement/deliverable
+  ↓
+Approve / Request changes
+  ↓
+Real-time updates
+
+
+01
+
+Authentication and Enterprise SSO
+Start here
+
+
+Keycloak, OAuth 2.0, OIDC, PKCE, secure sessions, RBAC, tenant isolation
+
+
+02
+
+Core SaaS features
+
+
+Organizations, clients, projects, tasks, comments, invitations, audit logs
+
+
+03
+
+Performance and Redis
+
+
+Caching, TTL, invalidation, rate limiting, distributed locks, cache failures
+
+
+04
+
+Real-time and event-driven architecture
+
+
+WebSockets, Kafka, notifications, retry policies, dead-letter queues
+
+
+05
+
+Production engineering
+
+
+Testing, security, API versioning, observability, tracing, failure recovery
+
+
+06
+
+AWS deployment and cloud architecture
+
+
+VPC, IAM, ECR, ECS, ALB, S3, CloudFront, Lambda, DynamoDB, auto scaling
+
+
+07
+
+Kubernetes and Infrastructure as Code
+
+
+Kubernetes locally, EKS concepts, OpenTofu/Terraform, CI/CD
+
+
+08
+
+AWS analytics and data pipelines
+
+
+S3 data lake, Glue ETL, Athena SQL queries, event analytics
+
+
+09
+
+AI engineering
+
+
+LLMs, embeddings, vector databases, RAG, tool calling, agents, evaluations, AI security

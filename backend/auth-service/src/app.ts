@@ -1,6 +1,9 @@
 import express, { Request, Response } from "express";
 import router from "./routes/auth.routes.js";
 import cookieParser from "cookie-parser";
+import session from "express-session";
+import { RedisStore } from "connect-redis";
+import { redisClient } from "./config/redis.js";
 
 const app = express();
 
